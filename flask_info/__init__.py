@@ -47,7 +47,7 @@ class ConfigClass(object):
     #WEIRDEST ERROR EVER
     #SESSION_KEY_PREFIX = ""
     #SESSION_COOKIE_NAME = uuid4()
-    DEBUG = True
+    DEBUG = False
 
 app.config.from_object(__name__+'.ConfigClass')
 db = SQLAlchemy(app) # sql database

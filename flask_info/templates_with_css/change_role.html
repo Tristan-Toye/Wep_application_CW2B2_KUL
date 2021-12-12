@@ -1,0 +1,37 @@
+
+<section id="banner" style="height:100%">
+{% extends "template.html" %}
+{%block content%}
+  <header>
+    <h2>Please log in</h2>
+  </header>
+<section class = "text-center">
+        <div class="container">
+        <form method="POST" class="form-signin" >
+            {{ form.hidden_tag() }}
+
+
+
+            <br>
+            {{ form.user_change_national_number.label() }}
+            {{ form.user_change_national_number(class="form-control", placeholder="National number") }}
+            {{ form.user_change_role.label() }}
+            {{ form.user_change_role(class="form-control", placeholder="Role") }}
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Your password") }}
+
+            <br>
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+
+
+        </form>
+             </div>
+</section>
+    <br />
+
+    {% endblock%}
+</section>
+
+

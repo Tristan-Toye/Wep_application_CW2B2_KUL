@@ -23,7 +23,7 @@ class ConfigClass(object):
     # Flask-SQLAlchemy settings
     # you need to CONFIG for pythonanywhere
     #SQLALCHEMY_DATABASE_URI = 'sqlite:///test.db'    # File-based SQL database
-    SQLALCHEMY_DATABASE_URI = "postgres://laidqmyudwfkou:00a5c68ea3d1a388b9fe94d20036c8bff201c9add78601a9c61b25e014d7f3a5@ec2-34-242-89-204.eu-west-1.compute.amazonaws.com:5432/db37mkqqljphe3"
+    SQLALCHEMY_DATABASE_URI = "postgresql://laidqmyudwfkou:00a5c68ea3d1a388b9fe94d20036c8bff201c9add78601a9c61b25e014d7f3a5@ec2-34-242-89-204.eu-west-1.compute.amazonaws.com:5432/db37mkqqljphe3"
     SQLALCHEMY_TRACK_MODIFICATIONS = False    # Avoids SQLAlchemy warning
 
     # Flask-Mail SMTP server settings

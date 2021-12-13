@@ -19,4 +19,4 @@ psycopg2
 gunicorn
 eventlet
 gevent-websocket
-opencv-python-headless==4.2.0.32
+opencv-python-headless

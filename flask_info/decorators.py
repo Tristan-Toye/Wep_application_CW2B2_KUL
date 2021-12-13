@@ -39,8 +39,7 @@ def required_path(f):
             print(session.get('face_validated'))
             if not session.get('face_validated') and last_url[-1] != sequence_admin[0]:
                 flash("You need to pass the face recognition first or go directly from login to face recognition!",category='danger')
-                flash(last_url[-1],category='info')
-                flash(sequence_admin[0],category='info')
+               
                 return redirect(url_for('home'))
             if session.get('face_validated') and last_url[-2] != sequence_admin[0] and last_url[-1] != sequence_admin[1]:
                 print(last_url)

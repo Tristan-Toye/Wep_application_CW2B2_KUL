@@ -17,8 +17,8 @@ class ConfigClass(object):
     # extra layer of protection needed for form HTML
     # random string generated:
     # import os
-    # os.urandom(12).hex()
-    SECRET_KEY = os.urandom(20).hex()
+    # os.urandom(20).hex()
+    SECRET_KEY = '2a851f80efde7b9a2e10c9ada37b031193e8fb60'
 
     # Flask-SQLAlchemy settings
     # you need to CONFIG for pythonanywhere
@@ -47,7 +47,7 @@ class ConfigClass(object):
     #WEIRDEST ERROR EVER
     #SESSION_KEY_PREFIX = ""
     #SESSION_COOKIE_NAME = uuid4()
-    DEBUG = False
+    DEBUG = True
 
 app.config.from_object(__name__+'.ConfigClass')
 db = SQLAlchemy(app) # sql database

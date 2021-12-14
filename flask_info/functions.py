@@ -201,6 +201,9 @@ def function_filter_hash(national_number,already_hashed = False):
     lijst_hash = list(national_number_hash)
 
     lijst_hash_encoded = [ord(char) for char in lijst_hash]
-
-    return ''.join([chr(code) for code in lijst_hash_encoded if
+    hash = ''.join([chr(code) for code in lijst_hash_encoded if
                           47 < code < 58 or 64 < code < 91 or 96 < code < 123])  # 1-9,A-Z,a-z
+    if not already_hashed:
+        return hash[:cutoff_hash]
+    else:
+        return hash

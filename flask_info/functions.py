@@ -68,8 +68,8 @@ def create_specific_qr_combination(idnumber,random_hex,firstname,secondname="emp
     enc_achternaam = ''.join([encode_shift_strchar(x, encode_time_interval_current) for x in secondname])
     #enc_getal = ''.join([encode_shift_numchar(x, encode_time_interval_current) for x in str(idnumber)])
 
-    qr_str = random_characters(len(enc_voornaam)) + kenteken + str(encode_time_interval_current) + kenteken + str(encode_time_interval_next) + kenteken + enc_voornaam + kenteken + idnumber + kenteken + random_characters(len(enc_voornaam) - 3) + kenteken + enc_achternaam + kenteken
-    qr_str += random_hex
+    qr_str = idnumber + kenteken + random_hex
+    
 
     img = qrcode.make(qr_str)
     print(img)

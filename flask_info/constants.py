@@ -13,3 +13,4 @@ MODEL = 'hog'
 TOLERANCE = 0.6
 
 SALT = bytes('''\xc2d>\x9a\xdf\x00\x13\x80\x98\xc4\xf0C\\\xc7&B\xa7:@H''', 'utf-8')
+cutoff_hash = 64

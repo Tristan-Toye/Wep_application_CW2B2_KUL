@@ -51,22 +51,10 @@ def encode_shift_strchar(enc_str, timecode):
 def encode_shift_numchar(enc_num, timecode):
     return str(chr(ord(str(enc_num)) + timecode % 26 + 14))
 
-def create_specific_qr_combination(idnumber,random_hex,firstname,secondname="employee"):
-    try:
-        firstname = str(firstname)
-        secondname = str(secondname)
-        idnumber = str(idnumber)
-    except:
-        print("Error: argumenten create_specific_qr_combination konden niet omgezet worden naar string")
-        return False
+def create_specific_qr_combination(idnumber,random_hex):
+    
     encode_time_interval_current = time_specific_code()
     encode_time_interval_next    = encode_time_interval_current + 1
-
-
-
-    enc_voornaam = ''.join([encode_shift_strchar(x, encode_time_interval_current) for x in firstname])
-    enc_achternaam = ''.join([encode_shift_strchar(x, encode_time_interval_current) for x in secondname])
-    #enc_getal = ''.join([encode_shift_numchar(x, encode_time_interval_current) for x in str(idnumber)])
 
     qr_str = idnumber + kenteken + random_hex
     

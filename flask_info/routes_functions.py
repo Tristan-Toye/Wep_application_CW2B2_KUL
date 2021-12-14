@@ -243,14 +243,9 @@ def QR_code_self_request():
             # variabelen: naam, varvaldatum (, wachtwoord)
             # opslaan in de map static_test
             code = os.urandom(20).hex()
-            index = current_user.username.find(" ")
-            if index != -1:
+           
+            img = create_specific_qr_combination(current_user.national_number,code)
 
-                print('with surname')
-                img = create_specific_qr_combination(current_user.national_number,code,current_user.username[:index], current_user.username[index+1:])
-
-            else:
-                img = create_specific_qr_combination(current_user.national_number, code, current_user.username)
             qr = QR(code=code)
             qr.user.append(current_user)
             db.session.add(qr)

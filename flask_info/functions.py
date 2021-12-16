@@ -206,6 +206,6 @@ def generate_qr_leave(national_number):
     img.save(file_object, format='PNG')
     file_object.seek(0, 0)
     print(file_object.getvalue())
-    flash(f"Credential match", category='success')
+
     base = base64.b64encode(file_object.getvalue())
     return base.decode("utf-8")

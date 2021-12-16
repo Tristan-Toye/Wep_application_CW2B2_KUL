@@ -7,7 +7,7 @@ from flask_info.forms import RegisterForm, LoginForm, QR_code_self_Form, GoogleA
 from flask_login import login_user, logout_user
 from flask_user import roles_required, login_required, current_user
 from flask_info.constants import *
-from flask_info.functions import create_specific_qr_combination, function_filter_hash
+from flask_info.functions import create_specific_qr_combination, function_filter_hash, generate_qr_leave
 from flask_info.decorators import required_path,reset_session, add_url,check_register_admin
 
 import os

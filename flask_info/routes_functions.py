@@ -242,7 +242,7 @@ def QR_code_self_request():
             # code om  qr code te maken
             # variabelen: naam, varvaldatum (, wachtwoord)
             # opslaan in de map static_test
-            code = os.urandom(20).hex()
+            code = os.urandom(10).hex()
            
             img = create_specific_qr_combination(current_user.national_number,code)
 

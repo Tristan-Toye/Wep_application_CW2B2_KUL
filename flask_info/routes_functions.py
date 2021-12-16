@@ -146,6 +146,7 @@ def register_staff():
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
             national_number=function_filter_hash(form.national_number.data),
+            qr_leave = generate_qr_leave()
         )
 
         user_to_create.roles.append(Role.query.filter_by(name='staff').first())
@@ -175,6 +176,7 @@ def register_employee():
             email_address=form.email_address.data,
             password=user_manager.hash_password(form.password1.data),
             national_number=function_filter_hash(form.national_number.data),
+            qr_leave = generate_qr_leave()
         )
 
         user_to_create.roles.append(Role.query.filter_by(name=form.role.data).first())
@@ -269,6 +271,16 @@ def QR_code_self_request():
             flash(err_msg, category='danger')
 
     return render_template('QR_code_request.html',form=form)
+
+@app.route('/home/QR_code_leave')
+@reset_session
+@login_required
+@add_url
+def QR_code_leave():
+
+    base = current_user.qr_leave
+
+    return render_template('show_QR_code.html',image_data=base)
 
 """
 ROUTES FOR CONTENT

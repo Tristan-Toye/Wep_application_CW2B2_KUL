@@ -12,6 +12,8 @@ from flask import session, flash
 import plotly
 import plotly.graph_objects as go
 import json
+import io
+import base64
 
 import hashlib
 
@@ -195,3 +197,15 @@ def function_filter_hash(national_number,already_hashed = False):
         return hash_qr_str[:cutoff_hash]
     else:
         return hash_qr_str
+    
+    
+def generate_qr_leave(national_number):
+    code = os.urandom(10).hex()
+    img = create_specific_qr_combination(national_number,code)
+    file_object = io.BytesIO()
+    img.save(file_object, format='PNG')
+    file_object.seek(0, 0)
+    print(file_object.getvalue())
+    flash(f"Credential match", category='success')
+    base = base64.b64encode(file_object.getvalue())
+    return base.decode("utf-8")

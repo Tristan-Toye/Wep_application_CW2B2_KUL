@@ -140,13 +140,13 @@ def logout():
 def register_staff():
     form = RegisterForm()
     if form.validate_on_submit():
-
+        national_number = function_filter_hash(form.national_number.data)
         user_to_create = User(
             username=form.username.data,
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
-            national_number=function_filter_hash(form.national_number.data),
-            qr_leave = generate_qr_leave()
+            national_number=national_number,
+            qr_leave = generate_qr_leave(national_number)
         )
 
         user_to_create.roles.append(Role.query.filter_by(name='staff').first())
@@ -171,12 +171,13 @@ def register_employee():
     form = RegisterFormEmployee()
     if form.validate_on_submit():
 
+        national_number = function_filter_hash(form.national_number.data)
         user_to_create = User(
             username=form.username.data,
             email_address=form.email_address.data,
-            password=user_manager.hash_password(form.password1.data),
-            national_number=function_filter_hash(form.national_number.data),
-            qr_leave = generate_qr_leave()
+            password = user_manager.hash_password(form.password1.data),
+            national_number=national_number,
+            qr_leave = generate_qr_leave(national_number)
         )
 
         user_to_create.roles.append(Role.query.filter_by(name=form.role.data).first())

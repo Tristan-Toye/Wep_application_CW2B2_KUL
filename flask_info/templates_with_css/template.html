@@ -65,13 +65,13 @@
 
                 {% if current_user.is_authenticated %}
                     {% if current_user.roles[0].name == 'admin'%}
-                <li><a href="{{ url_for('register_employee')}}">register_employee </a></li>
+                <li><a href="{{ url_for('register_employee')}}">Register_employee </a></li>
 
                 <li><a href="{{url_for('employee_list')}}">List employees </a></button></li>
                 <li><a href="{{url_for('change_role')}}">Change role of employee </a></li>
                     {%endif%}
                        {% if current_user.roles[0].name == 'recruiter'%}
-                <li><a href="{{ url_for('register_staff')}}">register_staff </a></li>
+                <li><a href="{{ url_for('register_staff')}}">Register_staff </a></li>
                     {%endif%}
                     {% if current_user.roles[0].name == 'security'%}
                 <li><a href="{{url_for('employee_list')}}">List employees </a></button></li>
@@ -79,10 +79,10 @@
                 <li><a href="{{url_for('QR_code_self_request')}}">Make QR code for entrance </a></li>
 		<li><a href="{{url_for('QR_code_leave')}}">Make QR code for exit </a></li>
                 <li><a href="{{url_for('logs_employee', national_number = current_user.national_number)}}">Personal Logs</a></li>
-                <li><a href="{{url_for('logout')}}">logout </a></li>
+                <li><a href="{{url_for('logout')}}">Logout </a></li>
                 {%else%}
 
-                <li><a href="{{ url_for('login')}}">login </a></li>
+                <li><a href="{{ url_for('login')}}">Login </a></li>
 
                  {% endif %}
 

@@ -141,12 +141,15 @@ def register_staff():
     form = RegisterForm()
     if form.validate_on_submit():
         national_number = function_filter_hash(form.national_number.data)
+        code = os.urandom(10).hex()
         user_to_create = User(
             username=form.username.data,
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
             national_number=national_number,
-            qr_leave = generate_qr_leave(national_number)
+            qr_leave = generate_qr_leave(national_number),
+            qr_leave_code = code
+            
         )
 
         user_to_create.roles.append(Role.query.filter_by(name='staff').first())
@@ -172,12 +175,14 @@ def register_employee():
     if form.validate_on_submit():
 
         national_number = function_filter_hash(form.national_number.data)
+        code = os.urandom(10).hex()
         user_to_create = User(
             username=form.username.data,
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
             national_number=national_number,
-            qr_leave = generate_qr_leave(national_number)
+            qr_leave = generate_qr_leave(national_number),
+            qr_leave_code = code
         )
 
         user_to_create.roles.append(Role.query.filter_by(name=form.role.data).first())

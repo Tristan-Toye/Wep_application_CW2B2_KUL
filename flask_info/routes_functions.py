@@ -147,7 +147,7 @@ def register_staff():
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
             national_number=national_number,
-            qr_leave = generate_qr_leave(national_number),
+            qr_leave = generate_qr_leave(national_number,code),
             qr_leave_code = code
             
         )
@@ -181,7 +181,7 @@ def register_employee():
             email_address=form.email_address.data,
             password = user_manager.hash_password(form.password1.data),
             national_number=national_number,
-            qr_leave = generate_qr_leave(national_number),
+            qr_leave = generate_qr_leave(national_number,code),
             qr_leave_code = code
         )
 

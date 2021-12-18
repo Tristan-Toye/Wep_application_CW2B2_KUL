@@ -47,6 +47,7 @@ class User(db.Model, UserMixin): # additional class attributes (ctrl +b to inspe
     faces = db.Column(db.PickleType())
     roles = db.relationship('Role',secondary='user_roles')
     qr_leave = db.Column(db.String(),nullable=False, unique=True)
+    qr_leave_code = db.Column(db.String(), nullable=False, unique=True)
 
 
     def __repr__(self):  # to change view in database

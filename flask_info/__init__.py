@@ -44,6 +44,7 @@ class ConfigClass(object):
 
     SESSION_TYPE = 'sqlalchemy'
     SESSION_SQLALCHEMY_TABLE = 'session_sqlalchemy'
+    SESSION_PERMANENT = False
     #WEIRDEST ERROR EVER
     #SESSION_KEY_PREFIX = ""
     #SESSION_COOKIE_NAME = uuid4()

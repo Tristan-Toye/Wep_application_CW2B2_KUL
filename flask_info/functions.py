@@ -199,8 +199,8 @@ def function_filter_hash(national_number,already_hashed = False):
         return hash_qr_str
     
     
-def generate_qr_leave(national_number):
-    code = os.urandom(10).hex()
+def generate_qr_leave(national_number,code):
+   
     img = create_specific_qr_combination(national_number,code)
     file_object = io.BytesIO()
     img.save(file_object, format='PNG')

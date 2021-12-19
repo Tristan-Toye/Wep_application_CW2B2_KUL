@@ -682,7 +682,7 @@ tr {
             display: none;
             position: relative;
             top: 30px;
-            left: 50px;
+            left: 20px;
 
             border-radius: 0px 20px 20px 4px;
 			z-index:100;
@@ -899,7 +899,7 @@ tr {
                     position:absolute;
                     transition: .5s ease;
                     top: -50px;
-                    left: 70px;
+                    left: 40px;
 				}
 
 				.dropdown_button:hover {
@@ -912,7 +912,7 @@ tr {
                     position:absolute;
                     transition: .5s ease;
                     top: -50px;
-                    left: 70px;
+                    left: 40px;
 
 
 				}

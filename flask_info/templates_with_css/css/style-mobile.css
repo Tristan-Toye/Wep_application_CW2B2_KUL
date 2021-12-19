@@ -8,7 +8,7 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 #qr_code{
-width: 300 !important;	
+width: 300px !important;	
 object-fit:scale-down !important;
 }
 	*

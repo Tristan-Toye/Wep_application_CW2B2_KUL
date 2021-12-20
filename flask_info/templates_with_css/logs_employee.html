@@ -97,8 +97,10 @@
 
         data = JSON.parse(graph.data);
         layout= JSON.parse(graph.layout);
-
-        Plotly.newPlot('grafiek', data, layout);
+        const config = {
+          displayModeBar: false, // this is the line that hides the bar.
+        };
+        Plotly.newPlot('grafiek', data, layout,config);
 
     });
 const all_tables = document.querySelectorAll("table[data-name=Logs]");

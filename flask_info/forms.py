@@ -28,7 +28,7 @@ class ChangeRoleForm(FlaskForm):
                 raise ValidationError('This action seems to have no effect')
         else:
             raise ValidationError(f'User does not exist')
-    user_change_email_address = StringField(label='National number',validators=[DataRequired(),Email()])
+    user_change_email_address = StringField(label='Email address',validators=[DataRequired(),Email()])
     user_change_role = StringField(label='Role',validators=[DataRequired()])
     password = PasswordField(label='Confirm your Password', validators=[DataRequired()])
     submit = SubmitField(label='Validate')

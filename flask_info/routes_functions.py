@@ -330,10 +330,10 @@ def change_role():
     if form.validate_on_submit():
 
         if user_manager.verify_password(form.password.data, current_user.password):
-            national_number = form.user_change_national_number.data
+            email_address = form.user_change_email_address.data
             role_name = form.user_change_role.data
-            national_number = function_filter_hash(national_number)
-            user = User.query.filter_by(national_number=national_number).first()
+           
+            user = User.query.filter_by(email_address=email_address).first()
             role = Role.query.filter_by(name=role_name).first()
             user.roles = [role]
             db.session.commit()
@@ -348,7 +348,7 @@ def change_role():
             # return redirect(url_for('QR_code_self',username=current_user.username))
             # return redirect('/home/QR_code_self_request/'+current_user.username)
         else:
-            flash("Username or password incorrect, please try again", category='danger')
+            flash("Email or password incorrect, please try again", category='danger')
 
     elif form.errors != {}:  # dictionary
         for err_msg in form.errors.values():

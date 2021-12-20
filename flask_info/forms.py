@@ -6,9 +6,9 @@ from flask_info.functions import function_filter_hash
 import re
 
 class ChangeRoleForm(FlaskForm):
-    def validate_user_change_national_number(self, user_change_national_number_to_validate):
-        user_change_national_number_to_validate = function_filter_hash(user_change_national_number_to_validate.data)
-        user = User.query.filter_by(national_number=user_change_national_number_to_validate).first()
+    def validate_user_change_email_address(self, user_change_email_address_to_validate):
+        
+        user = User.query.filter_by(email_address=user_change_email_address_to_validate).first()
         if not user:
             raise ValidationError('User is not defined in database')
     def validate_user_change_role(self,user_change_role_to_validate):
@@ -28,7 +28,7 @@ class ChangeRoleForm(FlaskForm):
                 raise ValidationError('This action seems to have no effect')
         else:
             raise ValidationError(f'User does not exist')
-    user_change_national_number = StringField(label='National number',validators=[DataRequired()])
+    user_change_email_address = StringField(label='National number',validators=[DataRequired(),Email()])
     user_change_role = StringField(label='Role',validators=[DataRequired()])
     password = PasswordField(label='Confirm your Password', validators=[DataRequired()])
     submit = SubmitField(label='Validate')

@@ -64,12 +64,12 @@ class RegisterForm(FlaskForm):
         if email:
             raise ValidationError('Email address already exists! Please try a different email address')
 
-    username = StringField(label='User Name:', validators=[Length(min=2, max=30), DataRequired()])
-    email_address = StringField(label='Email Address', validators=[Email(), DataRequired()])
+    username = StringField(label='Username', validators=[Length(min=2, max=30), DataRequired()])
+    email_address = StringField(label='Email address', validators=[Email(), DataRequired()])
     national_number = StringField(label='National number',validators=[DataRequired()])
     password1 = PasswordField(label='Password', validators=[Length(min=6, max=60), DataRequired()])
-    password2 = PasswordField(label='Confirm Password', validators=[EqualTo('password1'), DataRequired()])
-    submit = SubmitField(label='Create Account')
+    password2 = PasswordField(label='Confirm password', validators=[EqualTo('password1'), DataRequired()])
+    submit = SubmitField(label='Create account')
 
 
 class RegisterFormEmployee(FlaskForm):
@@ -102,13 +102,14 @@ class RegisterFormEmployee(FlaskForm):
         if email:
             raise ValidationError('Email address already exists! Please try a different email address')
 
-    username = StringField(label='User Name:', validators=[Length(min=2, max=30), DataRequired()])
-    email_address = StringField(label='Email Address', validators=[Email(), DataRequired()])
+    username = StringField(label='Username', validators=[Length(min=2, max=30), DataRequired()])
+    email_address = StringField(label='Email address', validators=[Email(), DataRequired()])
     national_number = StringField(label='National number', validators=[DataRequired()])
     role = StringField(label='Role', validators=[DataRequired()])
     password1 = PasswordField(label='Password', validators=[Length(min=6, max=60), DataRequired()])
-    password2 = PasswordField(label='Confirm Password', validators=[EqualTo('password1'), DataRequired()])
-    submit = SubmitField(label='Create Account')
+    password2 = PasswordField(label='Confirm password', validators=[EqualTo('password1'), DataRequired()])
+    submit = SubmitField(label='Create account')
+    
 class LoginForm(FlaskForm):
     email_address = StringField(label='Email:', validators=[Email(),DataRequired()])
     password = PasswordField(label='Confirm Password', validators=[DataRequired()])

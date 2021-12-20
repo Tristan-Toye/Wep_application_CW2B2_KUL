@@ -71,7 +71,7 @@ def login():
 
         else:
 
-            flash("Email_address or password incorrect, please try again", category='danger')
+            flash("Email address or password incorrect, please try again", category='danger')
 
     elif form.errors != {}:  # dictionary
         for err_msg in form.errors.values():

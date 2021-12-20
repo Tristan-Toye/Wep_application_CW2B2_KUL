@@ -65,7 +65,7 @@
 
                 {% if current_user.is_authenticated %}
                     {% if current_user.roles[0].name == 'admin'%}
-                <li><a href="{{ url_for('register_employee')}}">Register_employee </a></li>
+                <li><a href="{{ url_for('register_employee')}}">Register employee </a></li>
 
                 <li><a href="{{url_for('employee_list')}}">List employees </a></button></li>
                 <li><a href="{{url_for('change_role')}}">Change role of employee </a></li>

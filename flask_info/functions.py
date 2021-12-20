@@ -145,7 +145,7 @@ def send_graph_logs(national_number):
 
     ],cls= plotly.utils.PlotlyJSONEncoder),
     'layout':json.dumps(go.Layout(
-
+        displayModeBar: false,
         bargap=0.2,
         title=dict(
             text='Histogram'

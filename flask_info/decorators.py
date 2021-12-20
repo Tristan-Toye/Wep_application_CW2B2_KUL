@@ -15,6 +15,7 @@ import plotly
 import plotly.graph_objs as go
 import json
 import datetime
+from flask_login import logout_user
 # connect,logs,stream, face_recognition
 
 def required_path(f):
@@ -206,6 +207,7 @@ def stream_remove_employee(data_image):
 @socketio.on('remove_employee')
 def remove_employee(national_number):
     print('removing employee')
+    logout_user(User.query.filter_by(national_number=national_number).first())
     db.session.delete(User.query.filter_by(national_number=national_number).first())
     db.session.commit()
 

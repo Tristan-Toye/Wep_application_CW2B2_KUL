@@ -8,7 +8,7 @@ import re
 class ChangeRoleForm(FlaskForm):
     def validate_user_change_email_address(self, user_change_email_address_to_validate):
         
-        user = User.query.filter_by(email_address=user_change_email_address_to_validate).first()
+        user = User.query.filter_by(email_address=user_change_email_address_to_validate.data).first()
         if not user:
             raise ValidationError('User is not defined in database')
     def validate_user_change_role(self,user_change_role_to_validate):

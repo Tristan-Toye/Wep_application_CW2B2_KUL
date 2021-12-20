@@ -223,8 +223,83 @@ def generate_graph(national_number):
     y_still = [timedelta.seconds / 3600 for timedelta in y_still_timedelta]
     text = [f"entry:{entry_element} <br>exit:{exit_element}" for entry_element, exit_element in zip(entry, exit)]
     user = User.query.filter_by(national_number=national_number).first()
+    if len(x_still)>0:
+        fig = {'data':json.dumps([
+            go.Bar( x=x,
+                    y=y,
+                    name=user.username,
+                    showlegend=True,
+                    marker_color = 'rgba(0, 89, 0, 0.53)',
+                    hoverinfo = 'text',
+                    hovertext = text
+                   ),
+            go.Bar(
+                x = x_still,
+                y = y_still,
+                showlegend=False,
+                marker_color='rgba(146, 139, 145, 0.43)',
+                hoverinfo='text',
+                hovertext=f"started at {x_still[0]}"
+            )
 
-    fig = {'data':json.dumps([
+        ],cls= plotly.utils.PlotlyJSONEncoder),
+        'layout':json.dumps(go.Layout(
+
+            bargap=0.2,
+            title=dict(
+                text=f"Logs of {user.username} ({user.roles[0].name})"
+            ),
+            xaxis=dict(
+                rangeslider=dict(
+                    thickness=0.07,
+                    visible=True,
+
+                ),
+
+            rangeselector=dict(
+                buttons=[
+                    dict(count=3,
+                         label="3 days",
+                         step="day",
+                         stepmode="backward"),
+                    dict(count=5,
+                         label="5 days",
+                         step="day",
+                         stepmode="backward"),
+                    dict(count=14,
+                         label="2 weeks",
+                         step="day",
+                         stepmode="todate"),
+                    dict(count=1,
+                         label="1 month",
+                         step="month",
+                         stepmode="backward"),
+                    dict(count=6,
+                         label='6 months',
+                         step='month',
+                         stepmode="backward"),
+                    dict(count=1,
+                         label='1 year',
+                         step="year",
+                         stepmode="backward"),
+                    dict(step="all")
+                ]
+            ),
+            title=dict(
+                text="date"
+            )
+            ),
+            yaxis=dict(
+                title=dict(
+                    text="hours"
+                )
+            ),
+            paper_bgcolor='rgb(255,255,255,1)',
+            plot_bgcolor='rgb(255,255,255,1)',
+
+        ),cls= plotly.utils.PlotlyJSONEncoder)}
+    else:
+        fig = {'data':json.dumps([
         go.Bar( x=x,
                 y=y,
                 name=user.username,
@@ -233,14 +308,6 @@ def generate_graph(national_number):
                 hoverinfo = 'text',
                 hovertext = text
                ),
-        go.Bar(
-            x = x_still,
-            y = y_still,
-            showlegend=False,
-            marker_color='rgba(146, 139, 145, 0.43)',
-            hoverinfo='text',
-            hovertext=f"started at {x_still[0]}"
-        )
 
     ],cls= plotly.utils.PlotlyJSONEncoder),
     'layout':json.dumps(go.Layout(
@@ -297,8 +364,7 @@ def generate_graph(national_number):
         paper_bgcolor='rgb(255,255,255,1)',
         plot_bgcolor='rgb(255,255,255,1)',
 
-    ),cls= plotly.utils.PlotlyJSONEncoder)}
-
+        ),cls= plotly.utils.PlotlyJSONEncoder)}
     emit('graph_logs',fig)
 
     #socketio.emit('graph_logs',{'data':42})

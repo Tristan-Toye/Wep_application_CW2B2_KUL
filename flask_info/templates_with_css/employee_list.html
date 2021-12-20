@@ -179,9 +179,10 @@ document.getElementById("video").style.display='none';
                 clearInterval(interval);
                 stop_camera();
                 socket.emit("remove_employee",national_number);
-                window.alert("Removing "+username+" confirmed"))
-                location.reload();
-                 
+                 if (window.confirm("Removing "+username+" confirmed")){
+
+                     location.reload();
+                 }
 
 
 

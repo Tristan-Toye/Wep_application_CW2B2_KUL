@@ -13,10 +13,8 @@ class ChangeRoleForm(FlaskForm):
             raise ValidationError('User is not defined in database')
     def validate_user_change_role(self,user_change_role_to_validate):
         role = Role.query.filter_by(name=user_change_role_to_validate.data).first()
-        user_change_national_number_to_validate = self.user_change_national_number.data
-        user_change_national_number_to_validate = function_filter_hash(user_change_national_number_to_validate)
         print(user_change_national_number_to_validate)
-        user = User.query.filter_by(national_number=user_change_national_number_to_validate).first()
+        user = User.query.filter_by(email_address=self.user_change_email_address.data).first()
         print(user)
         if not role:
             raise ValidationError('Role is not defined in database')

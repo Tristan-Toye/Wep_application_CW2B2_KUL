@@ -100,7 +100,7 @@
         const config = {
   displayModeBar: false, // this is the line that hides the bar.
 };
-        Plotly.react('grafiek', data, layout,config);
+        Plotly.newPlot('grafiek', data, layout,config);
 
     });
 const all_tables = document.querySelectorAll("table[data-name=Logs]");

@@ -396,4 +396,4 @@ def make_visitor_QR():
         for err_msg in form.errors.values():
             flash(err_msg, category='danger')
 
-    return render_template('QR_code_request.html',form=form)
+    return render_template('QR_code_visitor.html',form=form)

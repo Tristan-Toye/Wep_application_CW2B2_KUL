@@ -109,7 +109,7 @@ class RegisterFormEmployee(FlaskForm):
     submit = SubmitField(label='Create account')
     
 class LoginForm(FlaskForm):
-    email_address = StringField(label='Email:', validators=[Email(),DataRequired()])
+    email_address = StringField(label='Email', validators=[Email(),DataRequired()])
     password = PasswordField(label='Confirm Password', validators=[DataRequired()])
     submit = SubmitField(label='Sign in')
 

@@ -2,7 +2,7 @@ from werkzeug import security
 
 from flask_info import app, db, time_based_pin
 from flask import render_template, redirect, url_for, flash, session
-from flask_info.models import User,Log, Role, CustomUserManager, QR
+from flask_info.models import User,Log, Role, CustomUserManager, QR, QR_VISITOR
 from flask_info.forms import RegisterForm, LoginForm, QR_code_self_Form, GoogleAuthenticatorForm, ChangeRoleForm, RegisterFormEmployee
 from flask_login import login_user, logout_user
 from flask_user import roles_required, login_required, current_user
@@ -355,3 +355,45 @@ def change_role():
             flash(err_msg, category='danger')
 
     return render_template('change_role.html', form=form)
+
+
+@app.route("/home/visitor_qr", methods=["GET", "POST"])
+@roles_required(['admin','recruiter','security'])
+@reset_session
+@add_url
+def make_visitor_QR():
+    
+    form = QR_make_visitor()
+    if form.validate_on_submit():
+
+        if user_manager.verify_password(form.password.data, current_user.password):
+
+            # code om  qr code te maken
+            # variabelen: naam, varvaldatum (, wachtwoord)
+            # opslaan in de map static_test
+            code = os.urandom(10).hex()
+           
+            img = create_specific_qr_combination(form.company.data,code)
+
+            qr = QR_VISITOR(code=code, company= form.company.data)
+            db.session.add(qr)
+            db.session.commit()
+            file_object = io.BytesIO()
+            img.save(file_object,format='PNG')
+            file_object.seek(0,0)
+            print(file_object.getvalue())
+            flash(f"Credential match", category='success')
+            base = base64.b64encode(file_object.getvalue())
+            base = base.decode("utf-8")
+
+            return render_template('show_QR_code.html',image_data=base)
+            #return redirect(url_for('QR_code_self',username=current_user.username))
+            #return redirect('/home/QR_code_self_request/'+current_user.username)
+        else:
+            flash("Username or password incorrect, please try again", category='danger')
+
+    elif form.errors != {}:  # dictionary
+        for err_msg in form.errors.values():
+            flash(err_msg, category='danger')
+
+    return render_template('QR_code_request.html',form=form)

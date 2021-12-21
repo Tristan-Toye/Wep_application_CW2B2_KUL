@@ -94,7 +94,7 @@ class QR_VISITOR(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     timestamp = db.Column(db.DateTime(), nullable=False, unique=False, default= datetime.datetime.now())
     code = db.Column(db.String(), nullable=False, unique=True)
-    company = db.Column(db.String(), nullable=False,unique=True)
+    company = db.Column(db.String(), nullable=False)
 
 
 

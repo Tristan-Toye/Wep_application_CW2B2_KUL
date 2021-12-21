@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, IntegerField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError, NumberRange
-from flask_info.models import User, Role
+from flask_info.models import User, Role, QR_VISITOR
 from flask_info.functions import function_filter_hash
 import re
 
@@ -116,4 +116,9 @@ class LoginForm(FlaskForm):
 
 class QR_code_self_Form(FlaskForm):
     password = PasswordField(label='Confirm Password', validators=[DataRequired()])
+    submit = SubmitField(label='Request QR code')
+class QR_make_visitor(FlaskForm):
+    
+    password =  PasswordField(label='Confirm Password', validators=[DataRequired()])
+    company = StringField(label='Company', validators=[DataRequired()])
     submit = SubmitField(label='Request QR code')

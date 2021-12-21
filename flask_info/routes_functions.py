@@ -3,7 +3,7 @@ from werkzeug import security
 from flask_info import app, db, time_based_pin
 from flask import render_template, redirect, url_for, flash, session
 from flask_info.models import User,Log, Role, CustomUserManager, QR, QR_VISITOR
-from flask_info.forms import RegisterForm, LoginForm, QR_code_self_Form, GoogleAuthenticatorForm, ChangeRoleForm, RegisterFormEmployee
+from flask_info.forms import RegisterForm, LoginForm, QR_code_self_Form, GoogleAuthenticatorForm, ChangeRoleForm, RegisterFormEmployee, QR_make_visitor
 from flask_login import login_user, logout_user
 from flask_user import roles_required, login_required, current_user
 from flask_info.constants import *

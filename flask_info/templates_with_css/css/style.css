@@ -1,4 +1,5 @@
 @charset 'UTF-8';
+#qr_code{
 
 @font-face {
 	font-family: 'FontAwesome';
@@ -24,7 +25,9 @@
 home_failed.html --> restart procedure/ authentication failed
 vein_failed.html --> backup_qr.html --> backup_eid.html --> entrance
 */
-
+height: 350px !important;	
+object-fit:scale-down !important;
+}
 
 	body
 	{

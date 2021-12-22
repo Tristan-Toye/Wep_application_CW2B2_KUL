@@ -29,7 +29,7 @@
 		text-align: center;"> Present employees</h1>
   </header>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for a name" class="searchbar" >
-{% for person in users%}
+
 
 
       <table data-name="Employees" style="width: 100%; border-collapse: collapse;">
@@ -41,7 +41,7 @@
             </tr>
         </thead>
         <tbody>
-
+{% for person in users%}
         
         <tr>
           <td style="width:20%; text-align: center; padding-bottom: 1em;">{{person.username}}</td>
@@ -49,13 +49,12 @@
           
         </tr>
         <tr></tr>
-         {% endfor %}
-
+          
+    {%endfor%}
         </tbody>
 
       </table>
-   
-    {%endfor%}
+
 
 
 </div>

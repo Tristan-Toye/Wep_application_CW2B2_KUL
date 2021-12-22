@@ -404,5 +404,7 @@ def make_visitor_QR():
 def present_employees():
     
     users = [log.user for log in Log.query.filter_by(date_exit=None).all()]
+    users2 = [log.user for log in Log.query.filter_by(date_exit=none).all()]
     print(users)
+    print(users2)
     return render_template('present_employees.html',users = users)

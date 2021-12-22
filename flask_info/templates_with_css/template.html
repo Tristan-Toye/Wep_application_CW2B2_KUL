@@ -82,6 +82,7 @@
                 <li><a href="{{url_for('QR_code_self_request')}}">Make QR code for entrance </a></li>
 		<li><a href="{{url_for('QR_code_leave')}}">Make QR code for exit </a></li>
                 <li><a href="{{url_for('logs_employee', national_number = current_user.national_number)}}">Personal Logs</a></li>
+		<li><a href="{{url_for('present_employees')}}">Present employees</a></li>
                 <li><a href="{{url_for('logout')}}">Logout </a></li>
                 {%else%}
 

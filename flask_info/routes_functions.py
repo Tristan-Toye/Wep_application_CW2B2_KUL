@@ -397,3 +397,11 @@ def make_visitor_QR():
             flash(err_msg, category='danger')
 
     return render_template('QR_code_visitor.html',form=form)
+@app.route("/home/present_employees", methods=["GET", "POST"])
+@login_required
+@reset_session
+@add_url
+def present_employees():
+    
+    users = [log.user for log in Log.query.filter_by(date_exit=None).all()]
+    return render_template('present_employees.html',users = users)
